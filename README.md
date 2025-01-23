@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning - Dicky Ary Setiawan
 
 ## Project Overview
 
@@ -19,44 +19,47 @@ Bagian laporan ini mencakup:
 ### Problem Statements
 
 Menjelaskan pernyataan masalah:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- apakah genre paling populer ?
+- siapakah penulis buku dengan jumlah terbanyak? dan buku apa yang paling populer berdasarkan Num_Ratingnya?
+- buku apa yang memiliki Avg_Rating paling tinggi dengan Num_Rating diatas 500.000? dan buku apa yang memiliki cosine_similarity yang paling tinggi dengan buku Avg_rating tertinggi tersebut?
 
 ### Goals
 
 Menjelaskan tujuan proyek yang menjawab pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+- Mengetahui apa genre paling populer pada buku
+- Mengetahui penulis dengan jumlah buku paling banyak
+- Mengetahui rekomendasi buku yang sesuai dengan nilai rating paling tinggi
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Approach” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution approach (algoritma atau pendekatan sistem rekomendasi).
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai jumlah data, kondisi data, dan informasi mengenai data yang digunakan. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Jumlah data yang dimiliki dataset ini sebanyak 10.000 data dengan 0 data duplicate dan 40 data kosong pada colom Description.
+sumber dataset (https://www.kaggle.com/datasets/ishikajohari/best-books-10k-multi-genre-data/data)
 
 Selanjutnya, uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
-Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+Variabel-variabel pada Best Books dataset adalah sebagai berikut:
+- Book             : Nama buku.
+- Author           : Nama penulis buku.
+- Description      : deskripsi buku yang di mention di goodreads.
+- Genres           : genre buku berdasarkan clasifikasi di goodreads.
+- Average Rating   : rating rata-rata yang diberikan user.
+- Number of Rating : jumlah user yang memberikan rating.
+- Url              : link untuk mengakses informasi lebih detail
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data beserta insight atau exploratory data analysis.
+untuk memahami data terdapat langkah yang akan dilakukan :
+1. mencari tahu daftar colom apa saja yang terdapat pada dataframe.
+2. melihat jenis data yang terdapat pada colom
+3. melihat statistik deskriptif pada dataframe
+4. melakuakn pengecekan apakah terdapat nilai yang sama atau duplicated
+5. melakukan drop nilai pada column genres yang memiliki nilai []
+6. melakukan pengecekan apakah terdapat nilai Na
+7. melakukan drop nilai Na
+8. membuat plot dengan nilai X adalah rating dan Y adalah jumlah buku
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+1. membuat variable baru dengan merubah data menjadi list dari colom Book dan Genres
+2. Membuat dataframe baru dan merubah nama colom Book menjadi book_nam dan Genres menjadi genre
 
 ## Modeling
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
@@ -73,8 +76,19 @@ Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, probl
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
 
-**---Ini adalah bagian akhir laporan---**
+Implikasi rekomendasi buku antara lain:
+1. memberikan rekomendasi buku sesuai dengan buku terakhir yang kita baca
+2. mencari buku yang mempunyai genre yang sama dengan buku yang dibaca
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+Apakah sudah menjawab problem statment?
+- apakah genre paling populer ?
+  genre yang paling populer berdasarkan dataset goodreads adalah Fiction disusul oleh Fantasy dan selanjutnya adalah Nonfiction.
+- siapakah penulis buku dengan jumlah terbanyak? dan buku apa yang paling populer berdasarkan Avg_Rating yang ditulis oleh penulis tersebut?
+  Nama penulis buku terbanyak adalah Stepen King dengan jumlah buku sebanyak 57 dengam buku paling tinggi ratingnya adalah The Dark Tower Series: Books 1-7
+- buku apa yang memiliki Avg_Rating paling tinggi dengan Num_Rating diatas 500.000? dan buku apa yang memiliki cosine_similarity yang paling tinggi dengan buku Avg_rating tertinggi tersebut?
+  buku dengan rating paling tinggi dengan jumlah user yang memberikan rating diatas 500.000 adalah A Court of Mist and Fury (A Court of Thorns and Roses, #2) dan buku dengan cosine_similarity paling tinggi dengan A Court of Mist and Fury (A Court of Thorns and Roses, #2) adalah The midnight Library dengan nilai cosine similarity sebesar 0.82 .
+
+Apakah berhasil mencapai goals yang diharapkan?
+- Goal pertama : Berhasil didapatkan bahwa genre Fiction adalah genre paling populer berdasarkan Goodreads.
+- Goal Kedua   : Berhasil mengetahui bahwa Stepen king adalah author dengan buku terbanyak sebanyak 57 buku.
+- Goal Ketiga  : Mengetahui bahwa the midnight library adalah buku yang paling direkomendasikan sesuai dengan buku dengan rating tinggi yaitu A Court of Mist and Fury (A Court of Thorns and Roses, #2).
