@@ -11,7 +11,7 @@ Dataset "Best Books 10k Multi-Genre Data" merupakan kumpulan data yang berisi in
 Menjelaskan pernyataan masalah:
 - Apakah genre paling populer ?
 - Siapakah penulis buku dengan jumlah terbanyak? dan buku apa yang paling populer berdasarkan Num_Ratingnya ?
-- Buku apa yang memiliki Avg_Rating paling tinggi dengan Num_Rating diatas 500.000? dan buku apa yang memiliki cosine_similarity yang paling tinggi dengan buku Avg_rating tertinggi tersebut ?
+- Buku apa yang memiliki Avg_Rating paling tinggi dengan Num_Rating diatas 2.000.000? dan buku apa yang memiliki cosine_similarity yang paling tinggi dengan buku Avg_rating tertinggi tersebut ?
 
 ### Goals
 
@@ -94,8 +94,8 @@ Apakah sudah menjawab problem statment?
   Genre yang paling populer berdasarkan dataset goodreads adalah Fiction disusul oleh Fantasy dan selanjutnya adalah Nonfiction.
 - Siapakah penulis buku dengan jumlah terbanyak? dan buku apa yang paling populer berdasarkan Avg_Rating yang ditulis oleh penulis tersebut?
   Nama penulis buku terbanyak adalah Stepen King dengan jumlah buku sebanyak 57 dengam buku paling tinggi ratingnya adalah The Dark Tower Series: Books 1-7.
-- Buku apa yang memiliki Avg_Rating paling tinggi dengan Num_Rating diatas 500.000? dan buku apa yang memiliki cosine_similarity yang paling tinggi dengan buku Avg_rating tertinggi tersebut?
-  Buku dengan rating paling tinggi dengan jumlah user yang memberikan rating diatas 500.000 adalah A Court of Mist and Fury (A Court of Thorns and Roses, #2) dan buku dengan cosine_similarity paling tinggi dengan A Court of Mist and Fury (A Court of Thorns and Roses, #2) adalah The midnight Library dengan nilai cosine similarity sebesar 0.82 .
+- Buku apa yang memiliki Avg_Rating paling tinggi dengan Num_Rating diatas 2.000.000? dan buku apa yang memiliki cosine_similarity yang paling tinggi dengan buku Avg_rating tertinggi tersebut?
+  buku dengan kriteria jumlah user yang memberikan rating diatas 2.000.000 dan memiliki rating paling baik adalah buku yang berjudul "Harry Potter and the Deathly Hallows (Harry Potter, #7)" karya J.K. Rowling. buku ini memilki cosine similarity paling tinggi dengan buku yang berjudul "Harry Potter and the Half-Blood Prince (Harry Potter, #6)","Harry Potter and the Order of the Phoenix (Harry Potter, #5, Part 1)", dan "Harry Potter and the Deathly Hallows (Harry Potter, #7)" dengan memiliki cosine similarity bernilai 1
 
 Apakah berhasil mencapai goals yang diharapkan?
 - Goal pertama : Berhasil didapatkan bahwa genre Fiction adalah genre paling populer berdasarkan Goodreads.
