@@ -63,6 +63,8 @@ untuk memahami data terdapat langkah yang akan dilakukan :
 10. Mencari baris yang sesuai dengan indeks buku (yaitu nilai cosine similarity antara buku yang dicari dan semua buku lainnya).
 
 Berikut adalah hasil rekomendasi dari buku yang berjudul "Big Fish":
+
+
 ![image](https://github.com/user-attachments/assets/7e1513e8-55e2-4302-8765-d1dc8ea9d845)
 
 
