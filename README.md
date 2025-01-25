@@ -38,29 +38,34 @@ untuk memahami data terdapat langkah yang akan dilakukan :
 1. Mencari tahu daftar colom apa saja yang terdapat pada dataframe.
 2. Melihat jenis data yang terdapat pada colom.
 3. Melihat statistik deskriptif pada dataframe.
-4. Melakuakn pengecekan apakah terdapat nilai yang sama atau duplicated.
-5. Melakukan drop nilai pada column genres yang memiliki nilai [].
-6. Melakukan pengecekan apakah terdapat nilai Na.
-7. Melakukan drop nilai Na.
-8. Membuat plot dengan nilai X adalah rating dan Y adalah jumlah buku.
-
+4. Membuat plot dengan nilai X adalah rating dan Y adalah jumlah buku.
+   
+Insight yang didapatkan:
+1. jumlah buku paling banyak berada pada rating 4.
+2. buku dengan rating paling rendah adalah They Called Me Wyatt karangan Natasha Tynes dengan rating 1.64 dengan jumlah orang yang merating berjumlah 2302.
+3. jumlah buku dengan rating diatas 4 berjumlah 5 buku.
+4. buku dengan rating dibawah 2 ternyata hanya satu buku saja yang berjudul "They Called Me Wyatt" karya Natasha Tynes.
+   
 ## Data Preparation
 
-1. Membuat variable baru dengan merubah data menjadi list dari colom Book dan Genres.
-2. Membuat dataframe baru dan merubah nama colom Book menjadi book_nam dan Genres menjadi genre.
+1. Melakukan drop nilai pada column genres yang memiliki nilai [].
+2. Melakukan pengecekan apakah terdapat nilai Na.
+3. Melakukan drop nilai Na.
+4. Membuat variable baru dengan merubah data menjadi list dari colom Book dan Genres.
+5. Membuat dataframe baru dan merubah nama colom Book menjadi book_nam dan Genres menjadi genre.
+6. Membuat variable dengan menggunakan TfidfVectorizer.
+7. Selanjutnya melakuakn tokenisasi pada kolom Genres untuk dipecah menjadi token.
+8. Mengeluarkan vocabulary dari colom genre dalam bentuk array.
+9. Membuat variable baru dengan nama tfidf_matrix untuk merepresentasikan kata-kata unik (fitur/vocabulary) yang ditemukan di dalam colom genres.
+10. Selanjutnya merubah hasil dari TfidfVectorizer menjadi dense matrix.Dense matrix adalah representasi penuh dari matriks dalam bentuk array 2D, di mana setiap elemen memiliki nilai eksplisit (bukan nol diisi dengan angka 0).
 
 ## Modeling
 
-1. Membuat variable dengan menggunakan TfidfVectorizer.
-2. Selanjutnya melakuakn tokenisasi pada kolom Genres untuk dipecah menjadi token.
-3. Mengeluarkan vocabulary dari colom genre dalam bentuk array.
-4. Membuat variable baru dengan nama tfidf_matrix untuk merepresentasikan kata-kata unik (fitur/vocabulary) yang ditemukan di dalam colom genres.
-5. Selanjutnya merubah hasil dari TfidfVectorizer menjadi dense matrix.Dense matrix adalah representasi penuh dari matriks dalam bentuk array 2D, di mana setiap elemen memiliki nilai eksplisit (bukan nol diisi dengan angka 0).
-6. Selanjutnya membuat variable baru bernama cosine_sim yang berisi matriks kemiripan cosine, yang menunjukkan tingkat kesamaan antara setiap pasangan dokumen.
-7. Membuat variable baru yang berisi Dataframe cosine_sim dan column yang berisi dataframe.Book .
-8. Membuat variable dengan nama buku yang akan digunakan sebagai referensi untuk mencari buku-buku serupa.
-9. Selanjunya mencari lokasi index dari nama buku.
-10. Mencari baris yang sesuai dengan indeks buku (yaitu nilai cosine similarity antara buku yang dicari dan semua buku lainnya).
+1. Membuat variable baru bernama cosine_sim yang berisi matriks kemiripan cosine, yang menunjukkan tingkat kesamaan antara setiap pasangan dokumen.
+2. Membuat variable baru yang berisi Dataframe cosine_sim dan column yang berisi dataframe.Book .
+3. Membuat variable dengan nama buku yang akan digunakan sebagai referensi untuk mencari buku-buku serupa.
+4. Selanjunya mencari lokasi index dari nama buku.
+5. Mencari baris yang sesuai dengan indeks buku (yaitu nilai cosine similarity antara buku yang dicari dan semua buku lainnya).
 
 Berikut adalah hasil rekomendasi dari buku yang berjudul "Big Fish":
 
