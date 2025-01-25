@@ -61,6 +61,13 @@ Insight yang didapatkan:
 
 ## Modeling
 
+Cosine similarity adalah algoritma yang digunakan untuk mengukur kemiripan antara dua vektor dalam ruang vektor, yang sering diterapkan pada masalah pemrosesan bahasa alami, pencarian informasi, dan pembelajaran mesin.
+Cara Kerja Cosine Similarity dengan mengukur seberapa dekat dua vektor arah (bukan panjangnya) dengan menghitung sudut antara keduanya. Nilai cosine similarity berkisar antara -1 hingga 1:
+1: Vektor tersebut memiliki arah yang sama.
+0: Vektor tersebut tidak memiliki korelasi atau tegak lurus satu sama lain.
+-1: Vektor tersebut memiliki arah yang berlawanan.
+
+berikut tahapan implementasi cosine similarity pada dataset ini:
 1. Membuat variable baru bernama cosine_sim yang berisi matriks kemiripan cosine, yang menunjukkan tingkat kesamaan antara setiap pasangan dokumen.
 2. Membuat variable baru yang berisi Dataframe cosine_sim dan column yang berisi dataframe.Book .
 3. Membuat variable dengan nama buku yang akan digunakan sebagai referensi untuk mencari buku-buku serupa.
@@ -74,12 +81,23 @@ Berikut adalah hasil rekomendasi dari buku yang berjudul "Big Fish":
 
 
 ## Evaluation
+Precision@K adalah metrik yang mengukur proporsi item relevan di antara K item yang direkomendasikan oleh model. Dengan kata lain, Precision@K menjawab pertanyaan: "Dari K rekomendasi teratas, berapa banyak yang relevan bagi pengguna?"
+Rumus Precision@K:
 
-Cosine similarity adalah metrik evaluasi yang digunakan untuk mengukur kemiripan antara dua vektor dalam ruang vektor, yang sering diterapkan pada masalah pemrosesan bahasa alami, pencarian informasi, dan pembelajaran mesin.
-Cara Kerja Cosine Similarity dengan mengukur seberapa dekat dua vektor arah (bukan panjangnya) dengan menghitung sudut antara keduanya. Nilai cosine similarity berkisar antara -1 hingga 1:
-1: Vektor tersebut memiliki arah yang sama.
-0: Vektor tersebut tidak memiliki korelasi atau tegak lurus satu sama lain.
--1: Vektor tersebut memiliki arah yang berlawanan.
+precision@K = (# of recommended item that relevan) / (# of recommended item)
+
+Relevan : nilai cosine similarity diatas angka 0.75
+
+Angka 0.75 merupakan nilai cosine similarity tersebut relevan dengan buku yang sedang dibaca. Dalam penerapannya angka ini cukup tinggi sehingga rekomendasi yang dihasilkan akan cukup bagus dan mempunyai nilai cosine similarity yang baik dengan buku yang sedang dibaca.
+- Buku yang digunakan adalah "Big Fish".
+- nilai K adalah 10 (dimana K adalah total rekomendasi yang diberikan).
+- threshold yang digunakan adalah 0.75 .
+- Selanjunya melakukan filter semua buku dengan nilai yang sesuai threshold.
+- Menghitung dengan rumus precision@k.
+
+Precision@K = 10 / 10 * 100% =  100%
+
+Rekomendasi buku yang diberikan menunjukkan bahwa semua buku tersebut mendapatkan nilai cosine similarity diatas 0.75 sehingga nilai Precision@K mendapatkan nilai 100% precision dari model sistem rekomendasi dengan pendekatan content based filtering.
 
 Dari rekomendasi yang didapatkan oleh buku yang berjudul "Big Fish" buku yang memiliki score cosine similarity paling tinggi adalah buku berjudul "The Midnight Library" dengan score 0.82 .
 
@@ -100,9 +118,9 @@ Apakah sudah menjawab problem statment?
 - Siapakah penulis buku dengan jumlah terbanyak? dan buku apa yang paling populer berdasarkan Avg_Rating yang ditulis oleh penulis tersebut?
   Nama penulis buku terbanyak adalah Stepen King dengan jumlah buku sebanyak 57 dengam buku paling tinggi ratingnya adalah The Dark Tower Series: Books 1-7.
 - Buku apa yang memiliki Avg_Rating paling tinggi dengan Num_Rating diatas 2.000.000? dan buku apa yang memiliki cosine_similarity yang paling tinggi dengan buku Avg_rating tertinggi tersebut?
-  buku dengan kriteria jumlah user yang memberikan rating diatas 2.000.000 dan memiliki rating paling baik adalah buku yang berjudul "Harry Potter and the Deathly Hallows (Harry Potter, #7)" karya J.K. Rowling. buku ini memilki cosine similarity paling tinggi dengan buku yang berjudul "Harry Potter and the Half-Blood Prince (Harry Potter, #6)","Harry Potter and the Order of the Phoenix (Harry Potter, #5, Part 1)" dengan memiliki cosine similarity bernilai 1
+  buku dengan kriteria jumlah user yang memberikan rating diatas 2.000.000 dan memiliki rating paling baik adalah buku yang berjudul "Harry Potter and the Philosopher’s Stone (Harry Potter, #1)" karya J.K. Rowling. buku ini memilki cosine similarity paling tinggi dengan buku yang berjudul "The Enchanted Castle" dengan memiliki cosine similarity bernilai 1
 
 Apakah berhasil mencapai goals yang diharapkan?
 - Goal pertama : Berhasil didapatkan bahwa genre Fiction adalah genre paling populer berdasarkan Goodreads.
 - Goal Kedua   : Berhasil mengetahui bahwa Stepen king adalah author dengan buku terbanyak sebanyak 57 buku.
-- Goal Ketiga  : Mengetahui bahwa the midnight library adalah buku yang paling direkomendasikan sesuai dengan buku dengan rating tinggi yaitu diantaranya "Harry Potter and the Half-Blood Prince (Harry Potter, #6)".
+- Goal Ketiga  : Mengetahui bahwa "The Enchanted Castle" adalah buku yang paling direkomendasikan sesuai dengan buku dengan rating tinggi yaitu diantaranya "Harry Potter and the Philosopher’s Stone (Harry Potter, #1)".
